@@ -1,5 +1,5 @@
 import ExpenseItem from './ExpenseItem';
-import './css/Expenses.css';
+import '../css/Expenses.css';
 
 const Exepnses = (props) => {
   return (
