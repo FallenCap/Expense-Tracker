@@ -10,6 +10,11 @@ const Exepnses = (props) => {
     setDropDownChangeYear(selectedYear);
   };
 
+  const filteredExpenses = props.inputData.filter((expense) => {
+    //The filter method returns a new array and the original array isn't touched.
+    return expense.date.getFullYear().toString() === dropDownChangeYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -17,8 +22,17 @@ const Exepnses = (props) => {
           selected={dropDownChangeYear}
           onChangeFilter={dropDownChangeHandler}
         />
-        {props.inputData.map((expense) => (
+
+        {/*Here we are creating ExpenseItem dynamically which represent the
+        <ExpenseItem 
+        title={props.expenses.title[i]}
+        amount={props.expenses.amount[i]}
+        date={props.date.date[i]}
+        />
+        */}
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}

@@ -13,6 +13,7 @@ const NewExpense = (props) => {
 
   return (
     <div className="new-expense">
+      {/* here we using custom prop onSaveExpenseData which is pointing the saveExpenseHandler function. */}
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
     </div>
   );

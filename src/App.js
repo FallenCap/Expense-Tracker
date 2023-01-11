@@ -30,9 +30,7 @@ const App = () => {
 
   const addExepenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
-      const newExpense = [expense, ...prevExpenses];
-      console.log(newExpense);
-      return newExpense;
+      return [expense, ...prevExpenses];
     });
   };
   // return React.createElement(

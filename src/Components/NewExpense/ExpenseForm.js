@@ -7,13 +7,19 @@ const ExpenseForm = (props) => {
   const [enteredDate, setEnteredDate] = useState('');
 
   const titleChangeHandler = (event) => {
+    /*Here in this function the setEnteredTitle 
+    function take the input from the form when the submit button will clicked. */
     setEnteredTitle(event.target.value);
   };
   const amountChangeHandler = (event) => {
+    /*Here in this function the setEnteredAmount 
+    function take the input from the form when the submit button will clicked. */
     setEnteredAmount(event.target.value);
   };
 
   const dateChangeHandler = (event) => {
+    /*Here in this function the setEnteredDate 
+    function take the input from the form when the submit button will clicked. */
     setEnteredDate(event.target.value);
   };
 
@@ -25,7 +31,11 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
     };
 
+    /*Here on onSaveExpenseData we pass the expenseData 
+    which works as a argument for saveExpenseDataHandler in the file NewExpenseData.*/
     props.onSaveExpenseData(expenseData);
+
+    //When the submit button is clicked then the all the input fields are reset as a empty field by calling the methods.
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
