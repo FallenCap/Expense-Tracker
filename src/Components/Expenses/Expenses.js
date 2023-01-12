@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
+import ExpensesList from './ExpensesList';
 import ExpensesFilter from './ExpensesFilter';
 import '../css/Expenses.css';
 
 const Exepnses = (props) => {
   const [dropDownChangeYear, setDropDownChangeYear] = useState('2020');
   const dropDownChangeHandler = (selectedYear) => {
+    /*Here the dropDownChangeHandler funcion takes value from the onChangeFilter
+     which also take data from the filterChangeHandler of ExpenseForm file.*/
     setDropDownChangeYear(selectedYear);
   };
 
@@ -18,26 +20,12 @@ const Exepnses = (props) => {
   return (
     <div>
       <Card className="expenses">
+        {/* Here the onChangeFilter custom prop point the dropDownChangeHandler function in the ExpensesFilter component. */}
         <ExpensesFilter
           selected={dropDownChangeYear}
           onChangeFilter={dropDownChangeHandler}
         />
-
-        {/*Here we are creating ExpenseItem dynamically which represent the
-        <ExpenseItem 
-        title={props.expenses.title[i]}
-        amount={props.expenses.amount[i]}
-        date={props.date.date[i]}
-        />
-        */}
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );
